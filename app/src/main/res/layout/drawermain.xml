@@ -146,6 +146,7 @@
                             android:inputType="number"
                             android:ems="10"
                             android:text="0"
+                            android:maxLength="3"
                             android:digits="0123456789."
                             android:background="@android:drawable/editbox_background"
                             android:id="@+id/editTextLoantermyear"
@@ -239,6 +240,7 @@
                             android:layout_height="wrap_content"
                             android:inputType="number"
                             android:ems="10"
+                            android:maxLength="5"
                             android:digits="0123456789."
                             android:background="@android:drawable/editbox_background"
                             android:id="@+id/editTextOriginationFee"
@@ -410,50 +412,6 @@
                             android:layout_marginTop="5dp">
 
                             <TextView
-                                android:text="Total  Amount"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/textViewTotalPrincipal"
-                                android:textColor="@color/main_text_color"
-                                android:textStyle="bold"
-                                android:textSize="15dp"
-                                android:layout_marginLeft="35dp"
-                                android:layout_weight="1"
-                                />
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:layout_weight="1">
-                                <TextView
-                                    android:layout_weight="1"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:textColor="@color/colorAccent"
-                                    android:textSize="15dp"
-                                    android:gravity="right"
-                                    android:id="@+id/textViewTotalPrincipalAmount"
-                                    android:textStyle="bold"
-                                    />
-
-                                <TextView
-                                    android:id="@+id/textViewInterestperINR2"
-                                    android:layout_width="50dp"
-                                    android:layout_height="wrap_content"
-                                    android:text=" INR"
-                                    android:textColor="@color/main_text_color"
-                                    android:textSize="15dp"
-                                    android:layout_marginLeft="10dp"
-                                    android:textStyle="bold" />
-                            </LinearLayout>
-                        </LinearLayout>
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_marginTop="5dp">
-
-                            <TextView
                                 android:text="Interest"
                                 android:layout_weight="1"
                                 android:layout_width="match_parent"
@@ -497,6 +455,52 @@
                             android:layout_marginTop="5dp">
 
                             <TextView
+                                android:text="Fees"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/textViewTotalFee"
+                                android:textColor="@color/main_text_color"
+                                android:textStyle="bold"
+                                android:textSize="15dp"
+                                android:layout_marginLeft="35dp"
+                                android:layout_weight="1"
+                                />
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_weight="1">
+                                <TextView
+                                    android:layout_weight="1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/colorAccent"
+                                    android:textSize="15dp"
+                                    android:gravity="right"
+                                    android:id="@+id/textViewTotalfees"
+                                    android:textStyle="bold"
+                                    />
+
+                                <TextView
+                                    android:id="@+id/textViewInterestperINRfee"
+                                    android:layout_width="50dp"
+                                    android:layout_height="wrap_content"
+                                    android:text=" INR"
+                                    android:textColor="@color/main_text_color"
+                                    android:textSize="15dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="5dp">
+
+                            <TextView
                                 android:text="Interest + Fee"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -531,6 +535,50 @@
                                     android:textSize="15dp"
                                     android:layout_marginLeft="10dp"
                                     android:textStyle="bold"/>
+                            </LinearLayout>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="5dp">
+
+                            <TextView
+                                android:text="Total  Amount"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/textViewTotalPrincipal"
+                                android:textColor="@color/main_text_color"
+                                android:textStyle="bold"
+                                android:textSize="15dp"
+                                android:layout_marginLeft="35dp"
+                                android:layout_weight="1"
+                                />
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_weight="1">
+                                <TextView
+                                    android:layout_weight="1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/colorAccent"
+                                    android:textSize="15dp"
+                                    android:gravity="right"
+                                    android:id="@+id/textViewTotalPrincipalAmount"
+                                    android:textStyle="bold"
+                                    />
+
+                                <TextView
+                                    android:id="@+id/textViewInterestperINR2"
+                                    android:layout_width="50dp"
+                                    android:layout_height="wrap_content"
+                                    android:text=" INR"
+                                    android:textColor="@color/main_text_color"
+                                    android:textSize="15dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:textStyle="bold" />
                             </LinearLayout>
                         </LinearLayout>
                         <LinearLayout

@@ -197,11 +197,7 @@ public class MainActivityDrawer extends AppCompatActivity implements View.OnClic
                     finish();
                     startActivity(intent);
                 }
-             /*   if (menuItem.getItemId() == R.id.Feeds) {
-                    FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.containerView, new Feeds()).commit();
 
-                }*/
 
 
                 //communicate
@@ -649,7 +645,6 @@ public class MainActivityDrawer extends AppCompatActivity implements View.OnClic
                 editTextLoanAmount.setText(null);
                 editTextInterestRate.setText(null);
                 editTextyear.setText("0");
-                //  editTextMonth.setText("0");
                 editTextOriginationFee.setText(null);
                 editTextDocumentationFee.setText(null);
                 editTextOtherFee.setText(null);
@@ -664,7 +659,6 @@ public class MainActivityDrawer extends AppCompatActivity implements View.OnClic
                 startActivity(Intent.createChooser(email, "Select Email Client"));
                 break;
         }
-
 
     }
 
