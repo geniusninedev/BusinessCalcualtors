@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Business Loan Calculator</string>
+    <string name="app_name">BusinessLoanCalculator</string>
 
     <string name="action_settings">Settings</string>
     <string name="app_id">Business Loan Calculator</string>
