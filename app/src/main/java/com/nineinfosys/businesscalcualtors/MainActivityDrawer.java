@@ -32,7 +32,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
+
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -70,6 +70,7 @@ public class MainActivityDrawer extends AppCompatActivity implements View.OnClic
     private MobileServiceTable<Contacts> mobileServiceTableContacts;
     private ArrayList<Contacts> azureContactArrayList;
     private static final int PERMISSION_REQUEST_CODE = 200;
+
     //Firebase variables... for authentication and contact uploading to firebase
     private FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener firebaseAuthListner;
@@ -79,20 +80,20 @@ public class MainActivityDrawer extends AppCompatActivity implements View.OnClic
     NavigationView mNavigationView;
     FragmentManager mFragmentManager;
     FragmentTransaction mFragmentTransaction;
-    ImageView profilePictureView;
+
     TextView Name, email;
     public Toolbar toolbar;
-    Intent intent;
+
 
 
     //business loan calculator designing tools
     EditText editTextLoanAmount, editTextInterestRate, editTextyear, editTextMonth, editTextOriginationFee, editTextCompoundsperyear, editTextDocumentationFee, editTextOtherFee;
     Button buttonCalculate, buttonReset, buttonEmail, buttonReport, buttonAmotization;
-    TextView textViewMonthlyPayment, textViewTotalloanPayment, textViewInterest, textViewInterestFee;
+    TextView textViewMonthlyPayment, textViewTotalloanPayment, textViewInterest, textViewInterestFee,textViewFees;
     LinearLayout layoutresult, layoutWarning;
     businessCalculator businessCalculator;
     double loanAmount, interestRate, originationfee, documentationfee, otherfee, monthlyPayment, TotalPayment, totalInterest, totalFee, totalAll, totalMonth, LoanAnnualPayment, totalAllfees;
-    int year, month, compounds;
+    int year, month;
     Spinner spinnerMonth;
 
 
@@ -119,7 +120,7 @@ public class MainActivityDrawer extends AppCompatActivity implements View.OnClic
         mNavigationView = (NavigationView) findViewById(R.id.shitstuff);
         Name = (TextView) mNavigationView.getHeaderView(0).findViewById(R.id.name);
         email = (TextView) mNavigationView.getHeaderView(0).findViewById(R.id.email);
-       // profilePictureView = (ImageView) mNavigationView.getHeaderView(0).findViewById(R.id.imageView);
+
 
         /**
          * Lets inflate the very first fragment
@@ -137,15 +138,14 @@ public class MainActivityDrawer extends AppCompatActivity implements View.OnClic
         //initalization of designing tools
         layoutresult = (LinearLayout) this.findViewById(R.id.layoutdisplayresult);
         layoutWarning = (LinearLayout) this.findViewById(R.id.layoutWarning);
-        // spinnerCompoundinglist=(Spinner)findViewById(R.id.spinnerinterestCompounding);
+
         editTextLoanAmount = (EditText) findViewById(R.id.editTextLoanAmount);
         editTextInterestRate = (EditText) findViewById(R.id.editTextLoanInterestRate);
         editTextyear = (EditText) findViewById(R.id.editTextLoantermyear);
-        //  editTextMonth=(EditText)findViewById(R.id.editTextLoantermmonth) ;
-        //   editTextCompoundsperyear=(EditText)findViewById(R.id.editTextCompounds) ;
-        editTextOriginationFee = (EditText) findViewById(R.id.editTextOriginationFee);
+         editTextOriginationFee = (EditText) findViewById(R.id.editTextOriginationFee);
         editTextDocumentationFee = (EditText) findViewById(R.id.editTextDocumentationFee);
         editTextOtherFee = (EditText) findViewById(R.id.editTextOtherFee);
+        textViewFees=(TextView) findViewById(R.id.textViewTotalfees);
 
         textViewMonthlyPayment = (TextView) findViewById(R.id.textViewMonthlyAmount);
         textViewTotalloanPayment = (TextView) findViewById(R.id.textViewTotalPrincipalAmount);
@@ -374,8 +374,9 @@ public class MainActivityDrawer extends AppCompatActivity implements View.OnClic
                     Log.e("ForumMainActivity:", "User was null so directed to Login activity");
                     Intent loginIntent = new Intent(MainActivityDrawer.this, Login.class);
                     loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(loginIntent);
                     finish();
+                    startActivity(loginIntent);
+
                 }
                 else {
                     if (!checkPermission()) {
@@ -487,7 +488,6 @@ public class MainActivityDrawer extends AppCompatActivity implements View.OnClic
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface arg0, int arg1) {
-
                         finish();
                     }
                 });
@@ -657,7 +657,7 @@ public class MainActivityDrawer extends AppCompatActivity implements View.OnClic
                 editTextOtherFee.setText(null);
                 break;
             case R.id.buttonBusinessLoanEmail:
-                String message="Loan Amount:"+new DecimalFormat("##.##").format(loanAmount)+"\n Interest Rate:"+new DecimalFormat("##.##").format(interestRate)+"\n Loan Period:"+new DecimalFormat("##.##").format(totalMonth)+"\n Origination Fee:"+new DecimalFormat("##.##").format(originationfee)+"\n Documentation Fee:"+new DecimalFormat("##.##").format(documentationfee)+"\n Other Fee:"+new DecimalFormat("##.##").format(otherfee)+"\n Total of Interest+Fee"+new DecimalFormat("##.##").format(totalAll)+"\n Monthly Payment:"+new DecimalFormat("##.##").format(monthlyPayment)+"\n Total Interest Amount:"+new DecimalFormat("##.##").format(totalInterest)+"\n Total Payment:"+new DecimalFormat("##.##").format(TotalPayment)+"\n Annual Payment:"+new DecimalFormat("##.##").format(LoanAnnualPayment);
+                String message="Loan Amount: "+new DecimalFormat("##.##").format(loanAmount)+"\n Interest Rate:"+new DecimalFormat("##.##").format(interestRate)+"%"+"\n Loan Period: "+new DecimalFormat("##.##").format(totalMonth)+"\n Origination Fee: "+new DecimalFormat("##.##").format(originationfee)+"\n Documentation Fee: "+new DecimalFormat("##.##").format(documentationfee)+"\n Other Fee: "+new DecimalFormat("##.##").format(otherfee)+"\n Total of Interest+Fee: "+new DecimalFormat("##.##").format(totalAll)+"\n Monthly Payment: "+new DecimalFormat("##.##").format(monthlyPayment)+"\n Total Interest Amount: "+new DecimalFormat("##.##").format(totalInterest)+"\n Total Payment: "+new DecimalFormat("##.##").format(TotalPayment)+"\n Annual Payment: "+new DecimalFormat("##.##").format(LoanAnnualPayment);
                 Intent email = new Intent(Intent.ACTION_SEND);
                 email.putExtra(Intent.EXTRA_EMAIL, new String[]{ });
                 email.putExtra(Intent.EXTRA_SUBJECT, "Loan Details");
@@ -688,11 +688,7 @@ public class MainActivityDrawer extends AppCompatActivity implements View.OnClic
                 editTextyear.setError("Enter Compound Peroids in year");
                 layoutWarning.setVisibility(View.GONE);
                 layoutresult.setVisibility(View.GONE);
-            } /*else if (editTextMonth.getText().toString().trim().equals("") || editTextMonth.getText().toString().isEmpty()) {
-            editTextMonth.setError("Enter Loan term in Months");
-           layoutWarning.setVisibility(View.GONE);
-           layoutresult.setVisibility(View.GONE);
-        }*/
+            }
             else if (editTextOriginationFee.getText().toString().trim().equals("") || editTextOriginationFee.getText().toString().isEmpty()) {
                 editTextOriginationFee.setError("Enter Origination fee per year");
                 layoutWarning.setVisibility(View.GONE);
@@ -713,12 +709,11 @@ public class MainActivityDrawer extends AppCompatActivity implements View.OnClic
                 inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),InputMethodManager.HIDE_NOT_ALWAYS);
 
                 layoutresult.setVisibility(View.VISIBLE);
+                layoutWarning.setVisibility(View.GONE);
                 loanAmount = Double.parseDouble(editTextLoanAmount.getText().toString());
                 interestRate = Double.parseDouble(editTextInterestRate.getText().toString());
                 year = Integer.parseInt(editTextyear.getText().toString());
                 month = Integer.parseInt(spinnerMonth.getSelectedItem().toString().trim());
-                // month = Integer.parseInt(editTextMonth.getText().toString());
-                // compounds=Integer.parseInt(editTextCompoundsperyear.getText().toString());
                 originationfee = Double.parseDouble(editTextOriginationFee.getText().toString());
                 documentationfee = Double.parseDouble(editTextDocumentationFee.getText().toString());
                 otherfee = Double.parseDouble(editTextOtherFee.getText().toString());
@@ -727,15 +722,15 @@ public class MainActivityDrawer extends AppCompatActivity implements View.OnClic
                 monthlyPayment = businessCalculator.calculateEMI();
                 TotalPayment = businessCalculator.calculateTotalPayment();
                 totalInterest = businessCalculator.calculateTotalInterest();
-                totalFee = businessCalculator.calcualteFee();
-                totalAll = businessCalculator.calculateTotalAll();
                 totalMonth = businessCalculator.calculateMonth();
                 LoanAnnualPayment = businessCalculator.calculateAnnualPayment();
                 totalAllfees=businessCalculator.totalFee();
+                totalAll = businessCalculator.calculateTotalAll();
 
                 textViewMonthlyPayment.setText(new DecimalFormat("##.##").format(monthlyPayment));
                 textViewTotalloanPayment.setText(new DecimalFormat("##.##").format(TotalPayment));
                 textViewInterest.setText(new DecimalFormat("##.##").format(totalInterest));
+                textViewFees.setText(new DecimalFormat("##.##").format(totalAllfees));
                 textViewInterestFee.setText(new DecimalFormat("##.##").format(totalAll));
             }
     }

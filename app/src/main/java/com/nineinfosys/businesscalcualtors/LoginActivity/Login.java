@@ -96,8 +96,9 @@ public class Login extends AppCompatActivity {
                     if (mUser.isEmailVerified()) {
                         Toast.makeText(Login.this, "You are in =)", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(getApplicationContext(), MainActivityDrawer.class);
-                        startActivity(intent);
                         finish();
+                        startActivity(intent);
+
                     }
                 } else {
 
@@ -323,8 +324,9 @@ public class Login extends AppCompatActivity {
                                 Toast.makeText(Login.this,"You are in =)",Toast.LENGTH_LONG).show();
 
                                 Intent intent = new Intent(getApplicationContext(), MainActivityDrawer.class);
-                                startActivity(intent);
                                 finish();
+                                startActivity(intent);
+
                             }
 
                             else {
@@ -394,8 +396,9 @@ public class Login extends AppCompatActivity {
                         }else{
                             CreateNewUserInDatabase();
                             Intent intent = new Intent(getApplicationContext(), MainActivityDrawer.class);
-                            startActivity(intent);
                             finish();
+                            startActivity(intent);
+
                         }
 
                         hideProgressDialog();
@@ -456,8 +459,9 @@ public class Login extends AppCompatActivity {
                         else if(user!=null){
                             CreateGoogleUserInDataBase();
                             Intent intent = new Intent(getApplicationContext(), MainActivityDrawer.class);
-                            startActivity(intent);
                             finish();
+                            startActivity(intent);
+
                         }
 
                         // ...

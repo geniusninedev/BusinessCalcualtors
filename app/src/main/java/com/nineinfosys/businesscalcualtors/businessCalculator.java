@@ -9,7 +9,7 @@ public class businessCalculator {
     private double originationfee;
     private double otherfee;
     private double documentationfee;
-    double monthlyPayment,annualPayment,totalMonth,totalLoanPayment,totalInterest,totalInsurance,totalfee,totalMonths;
+    double monthlyPayment,annualPayment,totalMonth,totalLoanPayment,totalInterest,totalallfee,totalfee,totalMonths;
 	public double getLoanAmount() {
 		return loanAmount;
 	}
@@ -129,13 +129,14 @@ public class businessCalculator {
 
 	public double totalFee()
 	{
-		double totalallfee=totalfee+documentationfee+otherfee;
+		totalfee=((loanAmount) * (originationfee/100));
+		 totalallfee=totalfee+documentationfee+otherfee;
 		return totalallfee;
 	}
     //total interest+fee+other
     public double calculateTotalAll()
     {
-		double totalAll=totalInterest+totalfee+documentationfee+otherfee;
+		double totalAll=totalInterest+totalallfee;
 		return totalAll;
     }
     

@@ -78,8 +78,6 @@ public class BusinessLoanReport extends AppCompatActivity implements OnChartValu
         totalAllfees=getIntent().getExtras().getDouble("totalAllfees");
 
         mParties = new double[]{PrincipalAmount, ToatalInterest,totalAll};
-      //  Toast.makeText(this, " ToatalInterest" + ToatalInterest, Toast.LENGTH_SHORT).show();
-        //  mParties=strPrincipal;
 
         mChart = (PieChart) findViewById(R.id.chart1);
         mChart.setUsePercentValues(true);
@@ -107,8 +105,7 @@ public class BusinessLoanReport extends AppCompatActivity implements OnChartValu
         mChart.setRotationEnabled(true);
         mChart.setHighlightPerTapEnabled(true);
 
-        // mChart.setUnit(" €");
-        // mChart.setDrawUnitsInChart(true);
+
 
         // add a selection listener
         mChart.setOnChartValueSelectedListener(this);
@@ -132,7 +129,7 @@ public class BusinessLoanReport extends AppCompatActivity implements OnChartValu
         mChart.setEntryLabelColor(Color.BLACK);
         mChart.setEntryLabelTypeface(mTfRegular);
         mChart.setEntryLabelTextSize(12f);
-     //   mChart.setDrawSliceText(false);
+
     }
 
 
@@ -156,6 +153,7 @@ public class BusinessLoanReport extends AppCompatActivity implements OnChartValu
                 Bitmap bmp=bmScreen;
                 showDialog(ID_SCREENDIALOG);
                 ByteArrayOutputStream bStream = new ByteArrayOutputStream();
+
                 //Compress it before sending it to minimize the size and quality of bitmap.
                 bmp.compress(Bitmap.CompressFormat.PNG, 100, bStream);
                 byte[] byteArray = bStream.toByteArray();
@@ -211,7 +209,7 @@ public class BusinessLoanReport extends AppCompatActivity implements OnChartValu
                 break;
             }
             case R.id.actionSave: {
-                // mChart.saveToGallery("title"+System.currentTimeMillis());
+
                 mChart.saveToPath("title" + System.currentTimeMillis(), "");
                 break;
             }
@@ -300,13 +298,9 @@ public class BusinessLoanReport extends AppCompatActivity implements OnChartValu
         String strFee=new DecimalFormat("##.##").format(totalAllfees);
         String strprincipal=new DecimalFormat("##.##").format(PrincipalAmount);
         String str=(new DecimalFormat("##.##").format(TotalPayment));
-        SpannableString s = new SpannableString("Total Payment\n"+"(Principal)"+strprincipal+"+"+"(Interest)"+strInterest+"+"+"(Fees)"+strFee+"="+str);
+        SpannableString s = new SpannableString("Total Payment\n"+"(Principal)"+strprincipal+"+"+"(Interest)"+strInterest+"="+str);
          s.setSpan(new RelativeSizeSpan(1.7f), 0, 14, 0);
-      //  s.setSpan(new StyleSpan(Typeface.NORMAL), 14, s.length() - 14, 0);
-        //s.setSpan(new ForegroundColorSpan(Color.GRAY), 14, s.length() - 15, 0);
-        //s.setSpan(new RelativeSizeSpan(.8f), 14, s.length() - 15, 0);
-        // s.setSpan(new StyleSpan(Typeface.ITALIC), s.length() - 14, s.length(), 0);
-        //s.setSpan(new ForegroundColorSpan(ColorTemplate.getHoloBlue()), s.length() - 14, s.length(), 0);
+
         return s;
     }
 
@@ -324,9 +318,9 @@ public class BusinessLoanReport extends AppCompatActivity implements OnChartValu
 
         // Checks the orientation of the screen
         if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-           // Toast.makeText(this, "landscape", Toast.LENGTH_SHORT).show();
+
         } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
-           // Toast.makeText(this, "portrait", Toast.LENGTH_SHORT).show();
+
         }
     }
 
