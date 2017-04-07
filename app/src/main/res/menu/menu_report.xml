@@ -12,12 +12,7 @@
 
 
 
-    <!--<item
-        android:id="@+id/action_chart"
-        android:icon="@drawable/ic_piachart"
-        android:title="Chart"
-        android:orderInCategory="5"
-        app:showAsAction="ifRoom|collapseActionView" />-->
+
 </menu>
 
 

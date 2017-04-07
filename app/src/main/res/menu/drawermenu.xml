@@ -8,7 +8,7 @@
         <item
             android:id="@+id/BusinessLoanCalcualtor"
             android:icon="@drawable/ic_business"
-            android:title="Business Loan Calcualtor " />
+            android:title="Business Loan Calculator " />
 
     </group>
 
