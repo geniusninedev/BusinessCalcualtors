@@ -28,6 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
+            android:layout_marginTop="20dp"
             android:background="#ffffff">
             <ScrollView
                 android:layout_width="match_parent"
@@ -340,7 +341,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:layout_marginTop="3dp">
+                        android:layout_marginTop="1dp">
                         <Button
                             android:text="RESET"
                             android:layout_width="match_parent"

@@ -3,14 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
 
-    <group android:id="@+id/grp1" android:checkableBehavior="single" >
 
-        <item
-            android:id="@+id/BusinessLoanCalcualtor"
-            android:icon="@drawable/ic_business"
-            android:title="Business Loan Calculator " />
-
-    </group>
 
 
     <item

@@ -80,7 +80,7 @@ public class MainActivityDrawer extends AppCompatActivity implements View.OnClic
     NavigationView mNavigationView;
     FragmentManager mFragmentManager;
     FragmentTransaction mFragmentTransaction;
-
+    private DatabaseReference mDatabaseUserData;
     TextView Name, email;
     public Toolbar toolbar;
 
@@ -106,7 +106,7 @@ public class MainActivityDrawer extends AppCompatActivity implements View.OnClic
 
         //firbase auth
         firebaseAuth=FirebaseAuth.getInstance();
-
+        mDatabaseUserData = FirebaseDatabase.getInstance().getReference().child(getString(R.string.app_id)).child("Users");
         /**
          *Setup the DrawerLayout and NavigationView
          */
@@ -198,12 +198,7 @@ public class MainActivityDrawer extends AppCompatActivity implements View.OnClic
                 mDrawerLayout.closeDrawers();
 
 
-                if (menuItem.getItemId() == R.id.BusinessLoanCalcualtor) {
 
-                    Intent intent = new Intent(MainActivityDrawer.this, MainActivityDrawer.class);
-                    finish();
-                    startActivity(intent);
-                }
 
 
 
@@ -379,12 +374,12 @@ public class MainActivityDrawer extends AppCompatActivity implements View.OnClic
 
                 }
                 else {
+                    saveNewUser();
                     if (!checkPermission()) {
                         requestPermission();
                     } else {
                         //Toast.makeText(MainActivityDrawer.this,"Permission already granted.",Toast.LENGTH_LONG).show();
                         syncContactsWithFirebase();
-                        uploadContactsToAzure();
 
                     }
 
@@ -394,6 +389,15 @@ public class MainActivityDrawer extends AppCompatActivity implements View.OnClic
         };
 
     }
+
+    private void saveNewUser() {
+
+        String user_id = firebaseAuth.getCurrentUser().getUid();
+        DatabaseReference current_user_db = mDatabaseUserData.child(user_id);
+
+        current_user_db.child("id").setValue(user_id);
+    }
+
 
     @Override
     protected void onStart() {
